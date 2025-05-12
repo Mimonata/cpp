@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 07:29:38 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/12 07:31:31 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 07:41:54 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	PhoneBook
 	
 	public: 
 		Contact	contacts[MAX];
-		void	Add(Contact contacts[MAX]);
+		void	Add();
 		void	Search(Contact contacts[MAX]);
 		void	Exit();
 

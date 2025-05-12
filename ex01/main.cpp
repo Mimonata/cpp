@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:31 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/12 07:36:21 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 07:41:37 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 		std::getline(std::cin, input);
 		if (input == "ADD")
 		{
-			
+			ph.Add();
 		}	
 		else if (input == "SEARCH")
 		{
