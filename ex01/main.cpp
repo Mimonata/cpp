@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:31 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/12 19:05:26 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 20:12:41 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	main(void)
 	PhoneBook	ph;
 	
 	exit = false;
-	PhoneBook::last = 0;
-	PhoneBook::full = false;
 	while (!exit)
 	{
 		std::cout << "Welcome! Please enter ADD, SEARCH or EXIT" << std::endl;

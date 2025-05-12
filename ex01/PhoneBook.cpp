@@ -6,15 +6,17 @@
 /*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:39:48 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/12 19:51:09 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 20:17:08 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+int PhoneBook::last = 0;
+bool PhoneBook::full = false;
+
 PhoneBook::PhoneBook(void)
 {
-	
 	return ;
 }
 
@@ -23,7 +25,7 @@ PhoneBook::~PhoneBook(void)
 	return ;
 }
 
-void	PhoneBook::updateBook()
+void PhoneBook::updateBook()
 {
 	int	i;
 
@@ -31,10 +33,10 @@ void	PhoneBook::updateBook()
 		contacts[i] = contacts[i + 1];
 }
 
-void	PhoneBook::addContact(int index)
+void PhoneBook::addContact(int index)
 {
-	std::string	fname, lname, nickn, phone, secret;
-
+	std::string fname, lname, nickn, phone, secret;
+	
 	std::cout << "Enter the first name" << std::endl;
 	std::getline(std::cin, fname);
 	std::cout << "Enter the last name" << std::endl;
@@ -58,7 +60,7 @@ void PhoneBook::Add(void)
 	else
 	{
 		addContact(last);
-		last ++;
+		last++;
 		if (last == MAX - 1 && !full)
 			full = true;
 	}
