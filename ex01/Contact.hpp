@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:46 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/11 21:06:26 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 07:23:04 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ class Contact
 	int _index;
 
   public:
-	Contact(const std::string fname, const std::string lname,
-		const std::string nickn, const std::string phone,
-		const std::string darksecret, int index);
+	Contact(void);
 	~Contact(void);
 };
 
