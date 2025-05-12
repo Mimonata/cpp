@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 07:29:38 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/12 07:41:54 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 19:38:32 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ class	PhoneBook
 		void	Search(Contact contacts[MAX]);
 		void	Exit();
 
-		static int	_count;
+		static int	last;
+		static bool	full;
 		
 		PhoneBook(void);
 		~PhoneBook(void);
+
+		void	updateBook(void);
+		void	addContact(int index);
 };
 
 #endif
