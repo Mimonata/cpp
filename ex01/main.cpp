@@ -3,13 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:31 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/10 18:02:17 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/12 07:21:04 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int	main(void)
+{
+	
+	std::string	input;
+	bool		exit;
+	
+	exit =  false;
+	while (!exit)
+	{
+		std::cout << "Welcome! Please enter ADD, SEARCH or EXIT" << std::endl;
+		std::getline(std::cin, input);
+		if (input == "ADD")
+		{
+			
+		}	
+		else if (input == "SEARCH")
+		{
+			
+		}
+		else if (input == "EXIT")
+		{
+			
+		}
+		else
+		{
+			std::cout << "Wrong input\n Available options: ADD SEARCH EXIT" << std::endl;
+		}
+	}
+}
