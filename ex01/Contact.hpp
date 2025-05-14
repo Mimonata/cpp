@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:46 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/13 19:33:19 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/14 07:03:27 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ class Contact
 		const std::string darksecret, int index);
 	~Contact(void);
 
-	std::string	getFname (void) { return _fname; }
-	std::string getLname (void) { return _lname; }
-	std::string getNickn (void) { return _nickn; }
-	std::string getPhone (void) { return _phone; }
-	std::string	getSecret (void) { return _darksecret; }
+	std::string	getFname (void) const { return _fname; }
+	std::string getLname (void) const { return _lname; }
+	std::string getNickn (void) const { return _nickn; }
+	std::string getPhone (void) const { return _phone; }
+	std::string	getSecret (void) const { return _darksecret; }
 };
 
 #endif

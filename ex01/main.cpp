@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:31 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/12 20:12:41 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/14 07:25:50 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int	main(void)
 {
-	
 	std::string	input;
-	bool		exit;
+	bool		exit_book;
 	PhoneBook	ph;
 	
-	exit = false;
-	while (!exit)
+	exit_book = false;
+	while (!exit_book)
 	{
 		std::cout << "Welcome! Please enter ADD, SEARCH or EXIT" << std::endl;
 		std::getline(std::cin, input);
@@ -30,15 +29,16 @@ int	main(void)
 		}	
 		else if (input == "SEARCH")
 		{
-			
+			ph.Search();
 		}
 		else if (input == "EXIT")
 		{
-			
+			exit_book = true;
 		}
 		else
 		{
 			std::cout << "Wrong input\n Available options: ADD SEARCH EXIT" << std::endl;
 		}
 	}
+	return 0;
 }

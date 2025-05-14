@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:39:48 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/13 21:21:30 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/14 07:36:09 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void PhoneBook::updateBook()
 	int	i;
 
 	for (i = 0; i < MAX; i++)
+	{
 		contacts[i] = contacts[i + 1];
+		contacts[i].index = i - 1;
+	}
 }
 
 void PhoneBook::addContact(int index)
@@ -90,7 +93,7 @@ void PhoneBook::displayRow(std::string index, std::string fname, std::string lna
 	displayCell(nickn, false);
 }
 
-void	displayContact(int index)
+void	PhoneBook::displayContact(int index) const
 {
 	std::cout << contacts[index].getFname() << std::endl;
 	std::cout << contacts[index].getLname() << std::endl;
@@ -120,9 +123,16 @@ void PhoneBook::getContact(void)
 
 void PhoneBook::Search(void)
 {
+	std::stringstream	stm;
+	std::string			str_ind;
+	
 	displayRow("Index", "First Name", "Last Name", "Nickname");
 	for (int i = 0; i < last; i ++)
-		displayRow(std::to_string(contacts[i].index), contacts[i].getFname(), 
+	{
+		stm << contacts[i].index;
+		str_ind = stm.str();
+		displayRow(str_ind, contacts[i].getFname(), 
 		contacts[i].getLname(), contacts[i].getNickn());
+	}
 	getContact();
 }
