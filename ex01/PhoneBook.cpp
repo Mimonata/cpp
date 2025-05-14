@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:39:48 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/14 07:36:09 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/14 19:56:10 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void PhoneBook::updateBook()
 {
 	int	i;
 
-	for (i = 0; i < MAX; i++)
+	for (i = 0; i < MAX - 1; i++)
 	{
 		contacts[i] = contacts[i + 1];
-		contacts[i].index = i - 1;
+		contacts[i].index = i;
 	}
 }
 
@@ -47,7 +47,7 @@ void PhoneBook::addContact(int index)
 	std::getline(std::cin, nickn);
 	std::cout << "Enter the phone number" << std::endl;
 	std::getline(std::cin, phone);
-	std::cout << "Enter the darkest secret" << std::endl;
+	std::cout << "Enter the darkest secret" << RESET << std::endl;
 	std::getline(std::cin, secret);
 	contacts[index] = Contact(fname, lname, nickn, phone, secret, index);
 }
@@ -61,9 +61,9 @@ void PhoneBook::Add(void)
 	}
 	else
 	{
-		addContact(last);
 		last++;
-		if (last == MAX - 1 && !full)
+		addContact(last - 1);
+		if (last == MAX && !full)
 			full = true;
 	}
 }
@@ -84,8 +84,8 @@ void PhoneBook::displayCell(std::string str, bool separator)
 		std::cout << std::endl;
 }
 
-void PhoneBook::displayRow(std::string index, std::string fname, std::string lname,
-	std::string nickn)
+void PhoneBook::displayRow(std::string index, std::string fname,
+	std::string lname, std::string nickn)
 {
 	displayCell(index, true);
 	displayCell(fname, true);
@@ -93,7 +93,7 @@ void PhoneBook::displayRow(std::string index, std::string fname, std::string lna
 	displayCell(nickn, false);
 }
 
-void	PhoneBook::displayContact(int index) const
+void PhoneBook::displayContact(int index) const
 {
 	std::cout << contacts[index].getFname() << std::endl;
 	std::cout << contacts[index].getLname() << std::endl;
@@ -104,9 +104,9 @@ void	PhoneBook::displayContact(int index) const
 
 void PhoneBook::getContact(void)
 {
+	int	index;
+
 	std::string input;
-	int			index;
-	
 	std::cout << "Enter the index for the contact number you want to see" << std::endl;
 	std::getline(std::cin, input);
 	if (input.length() != 1 && !std::isdigit(input[0]))
@@ -114,25 +114,26 @@ void PhoneBook::getContact(void)
 		std::cout << "Invalid input" << std::endl;
 		return ;
 	}
-	index = input[0] - '0';
+	index = input[0] - '0' - 1;
 	if (index >= 0 && index < last)
 		displayContact(index);
-	else 
+	else
 		std::cout << "Invalid input - please select from an available index or press intro to exit" << std::endl;
 }
 
 void PhoneBook::Search(void)
 {
-	std::stringstream	stm;
-	std::string			str_ind;
-	
+	std::stringstream stm;
+	std::string str_ind;
 	displayRow("Index", "First Name", "Last Name", "Nickname");
-	for (int i = 0; i < last; i ++)
+	for (int i = 0; i < last; i++)
 	{
-		stm << contacts[i].index;
+		stm.str("");
+		stm.clear();
+		stm << contacts[i].index + 1;
 		str_ind = stm.str();
-		displayRow(str_ind, contacts[i].getFname(), 
-		contacts[i].getLname(), contacts[i].getNickn());
+		displayRow(str_ind, contacts[i].getFname(), contacts[i].getLname(),
+			contacts[i].getNickn());
 	}
 	getContact();
 }

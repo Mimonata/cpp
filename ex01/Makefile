@@ -1,7 +1,7 @@
 SRC = Contact.cpp PhoneBook.cpp main.cpp
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 CC = g++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g
 HEADERS = Contact.hpp PhoneBook.hpp
 
 NAME = PhoneBook
