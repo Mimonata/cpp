@@ -4,7 +4,7 @@ CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g
 HEADERS = Contact.hpp PhoneBook.hpp
 
-NAME = PhoneBook
+NAME = phonebook
 
 all: $(NAME)
 

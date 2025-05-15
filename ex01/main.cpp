@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:31 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/14 20:08:02 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/15 20:28:20 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	main(void)
 	while (!exit_book)
 	{
 		std::cout << GREEN << "Enter ADD, SEARCH or EXIT" << RESET << std::endl;
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+		{
+			std::cout << PINK << "EOF" << RESET << std::endl;
+			break ;
+		}
 		if (input == "ADD")
 		{
 			ph.Add();

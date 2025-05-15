@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 07:29:38 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/14 20:04:44 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/15 19:33:44 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class PhoneBook
 		std::string nickn);
 	void getContact(void);
 	void displayContact(int index) const;
+	std::string	getInput(std::string prompt);
 };
 
 #endif

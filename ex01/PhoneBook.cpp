@@ -6,7 +6,7 @@
 /*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:39:48 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/14 19:56:10 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/15 20:12:56 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,52 @@ void PhoneBook::updateBook()
 	}
 }
 
+std::string PhoneBook::getInput(std::string prompt)
+{
+	std::string input;
+	std::cout << prompt << std::endl;
+	if (!std::getline(std::cin, input))
+	{
+		std::cin.clear();
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			return ("");
+		}
+		std::cin.ignore(10000, '\n');
+	}
+	return (input);
+}
+
 void PhoneBook::addContact(int index)
 {
 	std::string fname, lname, nickn, phone, secret;
-	std::cout << "Enter the first name" << std::endl;
-	std::getline(std::cin, fname);
-	std::cout << "Enter the last name" << std::endl;
-	std::getline(std::cin, lname);
-	std::cout << "Enter the nickname" << std::endl;
-	std::getline(std::cin, nickn);
-	std::cout << "Enter the phone number" << std::endl;
-	std::getline(std::cin, phone);
-	std::cout << "Enter the darkest secret" << RESET << std::endl;
-	std::getline(std::cin, secret);
+	fname = getInput("Enter the first name");
+	if (fname.empty())
+		return ;
+	lname = getInput("Enter the last name");
+	if (lname.empty())
+		return ;
+	nickn = getInput("Enter the nickname");
+	if (nickn.empty())
+		return ;
+	phone = getInput("Enter the phone number");
+	if (phone.empty())
+		return ;
+	secret = getInput("Enter the darkest secret");
+	if (secret.empty())
+		return ;
+	
+	// std::cout << "Enter the first name" << std::endl;
+	// std::getline(std::cin, fname);
+	// std::cout << "Enter the last name" << std::endl;
+	// std::getline(std::cin, lname);
+	// std::cout << "Enter the nickname" << std::endl;
+	// std::getline(std::cin, nickn);
+	// std::cout << "Enter the phone number" << std::endl;
+	// std::getline(std::cin, phone);
+	// std::cout << "Enter the darkest secret" << std::endl;
+	// std::getline(std::cin, secret);
 	contacts[index] = Contact(fname, lname, nickn, phone, secret, index);
 }
 
@@ -95,11 +128,11 @@ void PhoneBook::displayRow(std::string index, std::string fname,
 
 void PhoneBook::displayContact(int index) const
 {
-	std::cout << contacts[index].getFname() << std::endl;
-	std::cout << contacts[index].getLname() << std::endl;
-	std::cout << contacts[index].getNickn() << std::endl;
-	std::cout << contacts[index].getPhone() << std::endl;
-	std::cout << contacts[index].getSecret() << std::endl;
+	std::cout << "First name: " << contacts[index].getFname() << std::endl;
+	std::cout << "Last name: " << contacts[index].getLname() << std::endl;
+	std::cout << "Nickname: " << contacts[index].getNickn() << std::endl;
+	std::cout << "Phone: " << contacts[index].getPhone() << std::endl;
+	std::cout << "Darkest secret: " << contacts[index].getSecret() << std::endl;
 }
 
 void PhoneBook::getContact(void)
@@ -118,7 +151,7 @@ void PhoneBook::getContact(void)
 	if (index >= 0 && index < last)
 		displayContact(index);
 	else
-		std::cout << "Invalid input - please select from an available index or press intro to exit" << std::endl;
+		std::cout << "Invalid input	- please select from an available index or press intro to exit" << std::endl;
 }
 
 void PhoneBook::Search(void)
