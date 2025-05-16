@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:39:48 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/15 20:12:56 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/16 21:56:33 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,6 @@ void PhoneBook::addContact(int index)
 	secret = getInput("Enter the darkest secret");
 	if (secret.empty())
 		return ;
-	
-	// std::cout << "Enter the first name" << std::endl;
-	// std::getline(std::cin, fname);
-	// std::cout << "Enter the last name" << std::endl;
-	// std::getline(std::cin, lname);
-	// std::cout << "Enter the nickname" << std::endl;
-	// std::getline(std::cin, nickn);
-	// std::cout << "Enter the phone number" << std::endl;
-	// std::getline(std::cin, phone);
-	// std::cout << "Enter the darkest secret" << std::endl;
-	// std::getline(std::cin, secret);
 	contacts[index] = Contact(fname, lname, nickn, phone, secret, index);
 }
 
@@ -138,26 +127,33 @@ void PhoneBook::displayContact(int index) const
 void PhoneBook::getContact(void)
 {
 	int	index;
-
 	std::string input;
-	std::cout << "Enter the index for the contact number you want to see" << std::endl;
-	std::getline(std::cin, input);
-	if (input.length() != 1 && !std::isdigit(input[0]))
+	
+	while (1)
 	{
-		std::cout << "Invalid input" << std::endl;
-		return ;
+		input = getInput("Enter the index for a phone number or EXIT to return");
+		if (input.empty())
+			return ;
+		if (input == "EXIT")
+			return ;
+		if (input.length() != 1 && !std::isdigit(input[0]))
+		{
+			std::cout << "Invalid input" << std::endl;
+			continue ;
+		}
+		index = input[0] - '0' - 1;
+		if (index >= 0 && index < last)
+			displayContact(index);
+		else
+			std::cout << "Invalid input" << std::endl;
 	}
-	index = input[0] - '0' - 1;
-	if (index >= 0 && index < last)
-		displayContact(index);
-	else
-		std::cout << "Invalid input	- please select from an available index or press intro to exit" << std::endl;
 }
 
 void PhoneBook::Search(void)
 {
 	std::stringstream stm;
 	std::string str_ind;
+	
 	displayRow("Index", "First Name", "Last Name", "Nickname");
 	for (int i = 0; i < last; i++)
 	{
