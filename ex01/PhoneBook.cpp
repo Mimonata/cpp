@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:39:48 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/16 21:56:33 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/17 17:13:54 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,56 @@ void PhoneBook::updateBook()
 	}
 }
 
-std::string PhoneBook::getInput(std::string prompt)
+std::string PhoneBook::getInput(std::string prompt, bool *eof)
 {
 	std::string input;
-	std::cout << prompt << std::endl;
-	if (!std::getline(std::cin, input))
+	
+	while (true)
 	{
-		std::cin.clear();
-		if (std::cin.eof())
+		std::cout << prompt << std::endl;
+		if (!std::getline(std::cin, input))
 		{
-			std::cout << std::endl;
-			return ("");
+			if (std::cin.eof())
+			{
+				std::cout << std::endl;
+				*eof = true;
+				std::cin.clear();
+				return ("");
+			}
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+			continue ;
 		}
-		std::cin.ignore(10000, '\n');
+		if (input.empty())
+		{
+			std::cout << LILA << "Input cannot be empty - " << RESET;
+			continue ;
+		}
+		break ;
 	}
+	*eof =  false;
 	return (input);
 }
 
 void PhoneBook::addContact(int index)
 {
+	bool	eof;
+	
 	std::string fname, lname, nickn, phone, secret;
-	fname = getInput("Enter the first name");
-	if (fname.empty())
+	fname = getInput("Enter the first name", &eof);
+	if (eof)
 		return ;
-	lname = getInput("Enter the last name");
-	if (lname.empty())
+	lname = getInput("Enter the last name", &eof);
+	if (eof)
 		return ;
-	nickn = getInput("Enter the nickname");
-	if (nickn.empty())
+	nickn = getInput("Enter the nickname", &eof);
+	if (eof)
 		return ;
-	phone = getInput("Enter the phone number");
-	if (phone.empty())
+	phone = getInput("Enter the phone number", &eof);
+	if (eof)
 		return ;
-	secret = getInput("Enter the darkest secret");
-	if (secret.empty())
+	secret = getInput("Enter the darkest secret", &eof);
+	if (eof)
 		return ;
 	contacts[index] = Contact(fname, lname, nickn, phone, secret, index);
 }
@@ -115,37 +131,31 @@ void PhoneBook::displayRow(std::string index, std::string fname,
 	displayCell(nickn, false);
 }
 
-void PhoneBook::displayContact(int index) const
-{
-	std::cout << "First name: " << contacts[index].getFname() << std::endl;
-	std::cout << "Last name: " << contacts[index].getLname() << std::endl;
-	std::cout << "Nickname: " << contacts[index].getNickn() << std::endl;
-	std::cout << "Phone: " << contacts[index].getPhone() << std::endl;
-	std::cout << "Darkest secret: " << contacts[index].getSecret() << std::endl;
-}
+
 
 void PhoneBook::getContact(void)
 {
 	int	index;
 	std::string input;
+	bool	eof;
 	
 	while (1)
 	{
-		input = getInput("Enter the index for a phone number or EXIT to return");
-		if (input.empty())
+		input = getInput("Enter the index for a phone number or EXIT to return", &eof);
+		if (eof)
 			return ;
 		if (input == "EXIT")
 			return ;
-		if (input.length() != 1 && !std::isdigit(input[0]))
+		if (input.length() != 1 || !std::isdigit(input[0]))
 		{
-			std::cout << "Invalid input" << std::endl;
+			std::cout << "Invalid input 1" << std::endl;
 			continue ;
 		}
 		index = input[0] - '0' - 1;
 		if (index >= 0 && index < last)
-			displayContact(index);
+			contacts[index].displayContact();
 		else
-			std::cout << "Invalid input" << std::endl;
+			std::cout << ORANGE << "Index out of range" << RESET << std::endl;
 	}
 }
 

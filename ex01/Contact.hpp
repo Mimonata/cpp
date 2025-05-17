@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:39:46 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/14 07:03:27 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/17 16:31:15 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ class Contact
 		const std::string darksecret, int index);
 	~Contact(void);
 
-	std::string	getFname (void) const { return _fname; }
-	std::string getLname (void) const { return _lname; }
-	std::string getNickn (void) const { return _nickn; }
-	std::string getPhone (void) const { return _phone; }
-	std::string	getSecret (void) const { return _darksecret; }
+	std::string	getFname (void) const; 
+	std::string getLname (void) const;
+	std::string getNickn (void) const;
+	std::string getPhone (void) const;
+	std::string	getSecret (void) const;
+
+	void displayContact(void) const;
 };
 
 #endif

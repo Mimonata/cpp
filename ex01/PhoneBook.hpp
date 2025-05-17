@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 07:29:38 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/16 21:55:45 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/17 16:22:57 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ class PhoneBook
 	void displayRow(std::string index, std::string fname, std::string lname,
 		std::string nickn);
 	void getContact(void);
-	void displayContact(int index) const;
-	std::string	getInput(std::string prompt);
+	std::string	getInput(std::string prompt, bool *eof);
 };
 
 #endif
