@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spitul <spitul@student.42berlin.de >       +#+  +:+       +#+        */
+/*   By: spitul <spitul@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 07:29:38 by spitul            #+#    #+#             */
-/*   Updated: 2025/05/17 16:22:57 by spitul           ###   ########.fr       */
+/*   Updated: 2025/05/18 09:28:24 by spitul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <iostream>
 # include <sstream>
 
-# define MAX 4
+# define MAX 8
 # define STR_LEN 10
 
 # define RESET "\033[0m"
